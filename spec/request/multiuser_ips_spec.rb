@@ -19,7 +19,8 @@ describe 'multiuser ips', type: :request do
         body = JSON.parse(response.body).with_indifferent_access
         collection = body[:multiuser_ips]
         expect(collection.count).to eq 1
-        expect(collection.first).to include( { logins: ['foo', 'bar'], author_ip: '1.2.3.4' } )
+        expect(collection.first['logins']).to match_array ['foo', 'bar']
+        expect(collection.first['author_ip']).to eq "1.2.3.4"
       end
 
       it 'should perform under 100 ms' do

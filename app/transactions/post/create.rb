@@ -5,8 +5,8 @@ class Post::Create
   step :persist
 
   def validate(input)
-    result = Post::Schema.call(input)
-    result.success? ? Right(input) : Left(result.errors)
+    result = Post::Schema.call(input.to_h)
+    result.success? ? Right(result.output) : Left(result.errors)
   end
 
   def persist(input)
