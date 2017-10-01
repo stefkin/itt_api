@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
   def create
     Post::Create.new.call(post_params) do |either|
-      either.success { |attrs| render json: { post: attrs } }
-      either.failure { |errors| render json: { errors: errors }, status: 422 }
+      either.success { |post| render_json_oj({ post: post }) }
+      either.failure { |errors| render_json_oj({ errors: errors }, status: 422) }
     end
   end
 
   def index
-    render json: { posts: Post::TopRated.new(params[:count]).call }
+    render_json_oj({ posts: Post::TopRated.new(params[:count]).call })
   end
 
   private

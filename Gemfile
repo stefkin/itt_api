@@ -16,6 +16,7 @@ gem 'puma', '~> 3.7'
 gem 'dry-transaction'
 gem 'dry-validation'
 gem 'dry-types'
+gem 'oj'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
