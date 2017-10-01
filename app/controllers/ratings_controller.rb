@@ -1,8 +1,8 @@
 class RatingsController < ApplicationController
   def create
     Rating::Create.new.call(rating_params) do |either|
-      either.success { |rating|
-        render_json_oj({ avg_value: Post::AvgRating.new(rating.post_id).call })
+      either.success { |avg_value|
+        render_json_oj({ avg_value: avg_value })
       }
       either.failure { |errors| render json: { errors: errors }, status: 422 }
     end

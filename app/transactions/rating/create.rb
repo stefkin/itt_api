@@ -10,7 +10,15 @@ class Rating::Create
   end
 
   def persist(input)
-    rating = Rating.new(input)
-    rating.save ? Right(rating) : Left(rating.errors.full_messages)
+    ActiveRecord::Base.transaction do
+      rating = Rating.new(input)
+      if rating.save
+        new_avg = Post::AvgRating.new(rating.post_id).call
+        Post.where(id: rating.post_id).update_all(avg_rating: new_avg)
+        Right(new_avg)
+      else
+        Left(rating.errors.full_messages)
+      end
+    end
   end
 end
