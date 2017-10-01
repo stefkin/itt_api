@@ -104,4 +104,7 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  require 'rspec-benchmark'
+  config.include RSpec::Benchmark::Matchers
 end

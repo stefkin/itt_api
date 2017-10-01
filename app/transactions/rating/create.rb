@@ -5,7 +5,7 @@ class Rating::Create
   step :persist
 
   def validate(input)
-    result = Rating::Schema.call(input.permit!.to_h)
+    result = Rating::Schema.call(input.to_h)
     result.success? ? Right(result.output) : Left(result.errors)
   end
 

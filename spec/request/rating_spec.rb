@@ -13,6 +13,20 @@ describe 'rate a post', type: :request do
       body = JSON.parse(response.body).with_indifferent_access
       expect(response.status).to be 200
       expect(body[:avg_value]).to eq "3.0"
+
+
+
+      expect { post '/ratings', params: params }.to perform_under(100).ms
+    end
+  end
+
+  context 'rate post that does not exist' do
+    it 'should return 422 with errors' do
+      post '/ratings', params: { rating: { post_id: -1, value: 2 } }
+
+      body = JSON.parse(response.body).with_indifferent_access
+      expect(response.status).to be 422
+      expect(body[:errors]).to eq ["Post must exist"]
     end
   end
 end

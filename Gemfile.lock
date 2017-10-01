@@ -39,6 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (8.0.0)
+    benchmark-perf (0.2.1)
     builder (3.2.3)
     byebug (9.1.0)
     coderay (1.1.2)
@@ -151,6 +152,9 @@ GEM
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
       rspec-mocks (~> 3.6.0)
+    rspec-benchmark (0.3.0)
+      benchmark-perf (~> 0.2.0)
+      rspec (>= 3.0.0, < 4.0.0)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -207,6 +211,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   rspec
+  rspec-benchmark
   rspec-rails
   spring
   spring-watcher-listen (~> 2.0.0)

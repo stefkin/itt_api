@@ -30,6 +30,10 @@ RSpec.describe 'create post', type: :request do
       post = JSON.parse(response.body).with_indifferent_access[:post]
       expect(post).to include params[:post].except(:login)
     end
+
+    it 'should perform under 100ms' do
+      expect { post '/posts', params: params }.to perform_under(100).ms
+    end
   end
 
   context 'author does exist' do
