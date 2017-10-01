@@ -6,6 +6,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def index
+    render json: { posts: Post::TopRated.new(params[:count]).call }
+  end
+
   private
 
   def post_params
