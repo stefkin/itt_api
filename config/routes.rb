@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:create, :index]
   resources :ratings, only: [:create]
+  resources :multiuser_ips, only: [:index]
 end
