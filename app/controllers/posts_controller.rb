@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    render_json_oj({ posts: Post::TopRated.new(params[:count]).call })
+    render_json_oj({ posts: Post::TopRated.new(params[:count]).call }, except: [:id, :avg_rating])
   end
 
   private
