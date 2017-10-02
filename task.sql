@@ -14,6 +14,8 @@ group by (t.group_id = t.lead_group_id and (t.lead_id - t.id) = 1) OR
          (t.group_id = t.lag_group_id and (t.id - t.lag_id) = 1);
 
 
+-- QUERY RESULTS:
+
 -- user_ids | count_of_ids | min_in_group
 -- ----------+--------------+--------------
 -- {6}      |            1 |            6

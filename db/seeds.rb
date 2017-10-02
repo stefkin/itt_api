@@ -10,12 +10,17 @@
 ips = (1..50).map { Faker::Internet.ip_v4_address }
 logins = (1..100).map  { Faker::Internet.user_name }
 
+ip_login_pairs = ips.concat(ips).zip(logins)
+
 200_000.times do |i|
+  ip, login = ip_login_pairs.sample
+
   Post::Create.new.call(
     title: Faker::Lorem.sentence(1),
     content: Faker::Lorem.sentence(10),
-    login: logins.sample,
-    author_ip: ips.sample
+    login: login,
+    author_ip: ip
   )
+
   puts i
 end

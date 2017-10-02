@@ -44,14 +44,14 @@ RSpec.describe 'create post', type: :request do
     end
   end
 
-  context 'author login is too short' do
-    let(:login) { "X" }
+  context 'author login is empty' do
+    let(:login) { "" }
     before { post '/posts', params: params }
 
     it 'should respond with 422 and errors' do
       expect(response.status).to eq 422
       errors = JSON.parse(response.body).with_indifferent_access[:errors]
-      expect(errors).to eq({ "login" => ['size cannot be less than 3']})
+      expect(errors).to eq({ "login" => ['must be filled']})
     end
   end
 end

@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby
 
-Things you may want to cover:
+To start project simply run
 
-* Ruby version
+`bundle && rake db:create db:migrate db:seed && rails s`
 
-* System dependencies
+To run test suite
 
-* Configuration
+`rspec spec`
 
-* Database creation
+## SQL
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+SQL task solution is in task.sql file
